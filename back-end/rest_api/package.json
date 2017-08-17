@@ -1,0 +1,32 @@
+{
+  "main": "index.js",
+  "version": "1.0.0",
+  "name": "mean_rest_api",
+  "license": "UNLICENSED",
+  "description": "API RESTful para o projeto ng4_mean.",
+  "author": "Ideware Sistemas LTDA <contato@ideware.com.br>",
+  "keywords": [
+    "api",
+    "rest",
+    "ng4-mean"
+  ],
+  "scripts": {
+    "test": "nodemon index.js",
+    "start": "nodemon index.js --env=prod"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "method-override": "^2.3.9",
+    "minimist": "^1.2.0",
+    "mongoose": "^4.11.5",
+    "mongoose-encryption": "^1.5.0",
+    "morgan": "~1.0.0",
+    "nodemailer": "^4.0.1",
+    "nodemon": "^1.11.0"
+  }
+}
