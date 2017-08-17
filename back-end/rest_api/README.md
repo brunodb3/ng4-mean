@@ -1,10 +1,10 @@
-# re:connet RESTful API
+# NG4-MEAN RESTful API
 
-API RESTful para o projeto re:connet, faz a interface com o banco de dados MongoDB. Desenvolvido por Ideware Sistemas LTDA, como parte do projeto re:connet.
+API RESTful para o projeto NG4-MEAN, faz a interface com o banco de dados MongoDB. Desenvolvido por Bruno Duarte Brito, como parte do projeto NG4-MEAN.
 
 Consiste em:
 
-  * [API RESTful](https://bitbucket.org/ideware/recon_file_parser)
+  * [API RESTful](https://github.com/brunodb3/ng4_mean)
 
 ### Versão
 1.0.0
@@ -34,12 +34,14 @@ Então, prepare a plataforma e baixe os módulos:
 $ npm install # instala todos os módulos do npm
 ```
 
-Verifique a existência do banco de dados ```reconnet``` em sua máquina, para que seja possível realizar a interface, e execute a API:
+Para realizar a interface, execute a API:
 
 ```sh
-$ npm start # executa o arquivo index.js
+$ npm test # executa o arquivo index.js em ambiente de desenvolvimento
+
+$ npm start # executa o arquivo index.js em ambiente de produção
 ```
 
 A API estará disponível em ```localhost:porta_configurada```.
 
-**Ideware Sistemas LTDA - 2017**
+**Bruno Duarte Brito - 2017**

@@ -37,4 +37,4 @@ $ cd [pasta-do-repositorio]
 
 Existem duas pastas principais neste repositório, ```back-end``` e ```front-end```, cada qual com seus requisitos para configuração e utilização. Vide arquivo ```README.md``` em cada pasta.
 
-**Ideware Sistemas LTDA - 2017**
+**Bruno Duarte Brito - 2017**
