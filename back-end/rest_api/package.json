@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "name": "mean_rest_api",
   "license": "UNLICENSED",
+  "author": "Bruno Duarte Brito <brunodb3@gmail.com>",
   "description": "API RESTful para o projeto ng4_mean.",
-  "author": "Ideware Sistemas LTDA <contato@ideware.com.br>",
   "keywords": [
     "api",
     "rest",
