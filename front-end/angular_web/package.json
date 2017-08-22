@@ -18,7 +18,7 @@
     "e2e": "ng e2e"
   },
   "dependencies": {
-    "@angular/animations": "^4.0.0",
+    "@angular/animations": "^4.3.5",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
@@ -27,7 +27,11 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "angular2-jwt": "^0.2.3",
+    "angular2-notifications": "^0.7.7",
+    "bulma": "^0.5.1",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

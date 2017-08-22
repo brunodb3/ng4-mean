@@ -1,0 +1,73 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <h1 class="title has-text-centered">
+          Hello World!
+        </h1>
+        <form [formGroup]="loginForm" (ngSubmit)="sendLogin()">
+          <div class="field">
+            <label class="label">
+              Email
+            </label>
+            <div class="control has-icons-left has-icons-right">
+              <input formControlName="email" type="email" class="input" placeholder="Seu email"
+                [ngClass]="{
+                  'is-success': loginForm.controls['email'].valid && loginForm.controls['email'].touched,
+                  'is-danger': !loginForm.controls['email'].valid && loginForm.controls['email'].touched
+                }">
+              <span class="icon is-small is-left">
+                <i class="fa fa-envelope"></i>
+              </span>
+              <span class="icon is-small is-right"
+                *ngIf="loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+                <i class="fa fa-check"></i>
+              </span>
+              <span class="icon is-small is-right"
+                *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+                <i class="fa fa-warning"></i>
+              </span>
+            </div>
+            <p class="help is-danger"
+              *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+              E-mail inválido
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">
+              Senha
+            </label>
+            <div class="control has-icons-left has-icons-right">
+              <input formControlName="password" type="password" class="input" placeholder="Sua Senha"
+                [ngClass]="{
+                  'is-success': loginForm.controls['password'].valid && loginForm.controls['password'].touched,
+                  'is-danger': !loginForm.controls['password'].valid && loginForm.controls['password'].touched
+                }">
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+              <span class="icon is-small is-right"
+                *ngIf="loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                <i class="fa fa-check"></i>
+              </span>
+              <span class="icon is-small is-right"
+                *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                <i class="fa fa-warning"></i>
+              </span>
+            </div>
+            <p class="help is-danger"
+              *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+              Senha inválida
+            </p>
+          </div>
+          <div class="has-text-centered">
+            <button type="submit" [disabled]="!loginForm.valid"
+              class="button is-info is-medium">
+              Entrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

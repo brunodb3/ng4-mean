@@ -26,7 +26,7 @@ module.exports.accessLevelMiddleware = accessLevelMiddleware;
 function returnAuthError(res) {
   return res.status(403).json({
     success: false,
-    err_message: 'Falha na autenticação'
+    message: 'Falha na autenticação'
   });
 }
 
@@ -171,7 +171,7 @@ function getUsuarios(req, res, next) {
     if (usuarios.length === 0) {
       return res.json({
         success: false,
-        err_message: 'Não existem usuários com estes filtros'
+        message: 'Não existem usuários com estes filtros'
       });
     }
 
@@ -204,7 +204,7 @@ function createUsuario(req, res, next) {
     if (userDoc) {
       return res.json({
         success: false,
-        err_message: 'Já existe um usuário cadastrado com este email'
+        message: 'Já existe um usuário cadastrado com este email'
       });
     }
 
@@ -220,7 +220,7 @@ function createUsuario(req, res, next) {
       /* There was an error creating the hash */
       return res.json({
         success: false,
-        err_message: 'Confira se todos os campos foram preenchidos corretamente'
+        message: 'Confira se todos os campos foram preenchidos corretamente'
       });
     }
 
@@ -260,7 +260,7 @@ function updateUsuario(req, res, next) {
     if (!userDoc) {
       return res.status(404).json({
         success: false,
-        err_message: 'Usuário não encontrado'
+        message: 'Usuário não encontrado'
       });
     }
 
@@ -305,7 +305,7 @@ function updateUsuario(req, res, next) {
       /* There was an error */
       return res.json({
         success: false,
-        err_message: 'Confira se todos os campos foram preenchidos corretamente'
+        message: 'Confira se todos os campos foram preenchidos corretamente'
       });
     }
 
@@ -335,7 +335,7 @@ function removeUsuario(req, res, next) {
   if (!req.body.email) {
     return res.json({
       success: false,
-      err_message: 'Confira se todos os campos foram preenchidos corretamente'
+      message: 'Confira se todos os campos foram preenchidos corretamente'
     });
   }
 
@@ -348,7 +348,7 @@ function removeUsuario(req, res, next) {
     if (!userDoc) {
       return res.status(404).json({
         success: false,
-        err_message: 'Usuário não encontrado'
+        message: 'Usuário não encontrado'
       });
     }
 

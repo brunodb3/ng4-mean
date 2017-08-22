@@ -6,17 +6,22 @@
 
 /* Importing modules */
 import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule }   from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 /* Importing custom components */
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+
+/* Importing custom providers */
+import { AuthGuard } from './services/auth-guard.service';
 
 /* Defining the app's routes */
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: '404', component: NotFoundComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/404' }
 ];
 

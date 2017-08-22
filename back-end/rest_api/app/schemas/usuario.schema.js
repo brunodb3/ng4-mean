@@ -44,7 +44,7 @@ usuariosSchema.pre('save', function(next) {
 
       /* Setting the user password */
       user.senha = hash;
-      next();
+      return next();
     });
   });
 });
@@ -57,10 +57,10 @@ usuariosSchema.pre('save', function(next) {
 usuariosSchema.methods.validPassword = function(checkPassword, callback) {
   bcrypt.compare(checkPassword, this.senha, function(err, isMatch) {
     /* Checking for errors */
-    if (err) { callback(false); }
+    if (err) { return callback(false); }
 
     /* Returning the "isMatch" variable */
-    callback(isMatch);
+    return callback(isMatch);
   });
 };
 

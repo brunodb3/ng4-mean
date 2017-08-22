@@ -1,0 +1,11 @@
+<nav class="navbar" *ngIf="currentUrl !== '/login'">
+  <div class="navbar-brand">
+    <a class="navbar-item">
+      NavBar - MEAN Stack
+    </a>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+  <simple-notifications [options]="notificationOptions"></simple-notifications>
+</div>
