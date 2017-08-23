@@ -1,0 +1,133 @@
+<article class="message is-warning" *ngIf="!userToEdit.email">
+  <div class="message-body">
+    O e-mail informado não existe em nossa base de dados,
+    tente informar um diferente.
+  </div>
+</article>
+<article class="message">
+  <div class="message-body">
+    <b>{{ currentUser.nome }}, </b> você é
+    <span *ngIf="currentUser.nivel_acesso == 1"><b>administrador</b></span>
+    <span *ngIf="currentUser.nivel_acesso == 0"><b>usuário comum</b></span>
+  </div>
+</article>
+<form [formGroup]="userEditForm" (ngSubmit)="sendEdit()" *ngIf="userToEdit.email">
+  <!-- Email -->
+  <div class="field">
+    <label class="label">
+      Email
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <input formControlName="email" type="email" class="input" placeholder="Seu email"
+        [ngClass]="{
+          'is-success': userEditForm.controls['email'].valid && userEditForm.controls['email'].touched,
+          'is-danger': !userEditForm.controls['email'].valid && userEditForm.controls['email'].touched
+        }">
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="userEditForm.controls['email'].valid && userEditForm.controls['email'].touched">
+        <i class="fa fa-check"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="!userEditForm.controls['email'].valid && userEditForm.controls['email'].touched">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger"
+      *ngIf="!userEditForm.controls['email'].valid && userEditForm.controls['email'].touched">
+      E-mail inválido
+    </p>
+  </div>
+  <!-- Nome -->
+  <div class="field">
+    <label class="label">
+      Nome
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <input formControlName="name" type="text" class="input" placeholder="Seu nome"
+        [ngClass]="{
+          'is-success': userEditForm.controls['name'].valid && userEditForm.controls['name'].touched,
+          'is-danger': !userEditForm.controls['name'].valid && userEditForm.controls['name'].touched
+        }">
+      <span class="icon is-small is-left">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="userEditForm.controls['name'].valid && userEditForm.controls['name'].touched">
+        <i class="fa fa-check"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="!userEditForm.controls['name'].valid && userEditForm.controls['name'].touched">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger"
+      *ngIf="!userEditForm.controls['name'].valid && userEditForm.controls['name'].touched">
+      Nome inválido
+    </p>
+  </div>
+  <!-- Antiga Senha -->
+  <div class="field" *ngIf="currentUser.nivel_acesso == 0">
+    <label class="label">
+      Antiga Senha
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <input formControlName="old_password" type="password" class="input" placeholder="Sua antiga senha"
+        [ngClass]="{
+          'is-success': userEditForm.controls['old_password'].valid && userEditForm.controls['old_password'].touched,
+          'is-danger': !userEditForm.controls['old_password'].valid && userEditForm.controls['old_password'].touched
+        }">
+      <span class="icon is-small is-left">
+        <i class="fa fa-lock"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="userEditForm.controls['old_password'].valid && userEditForm.controls['old_password'].touched">
+        <i class="fa fa-check"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="!userEditForm.controls['old_password'].valid && userEditForm.controls['old_password'].touched">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger"
+      *ngIf="!userEditForm.controls['old_password'].valid && userEditForm.controls['old_password'].touched">
+      Senha inválida
+    </p>
+  </div>
+  <!-- Nova Senha -->
+  <div class="field">
+    <label class="label">
+      Nova Senha (opcional)
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <input formControlName="new_password" type="password" class="input" placeholder="Sua nova senha (opcional)"
+        [ngClass]="{
+          'is-success': userEditForm.controls['new_password'].valid && userEditForm.controls['new_password'].touched,
+          'is-danger': !userEditForm.controls['new_password'].valid && userEditForm.controls['new_password'].touched
+        }">
+      <span class="icon is-small is-left">
+        <i class="fa fa-lock"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="userEditForm.controls['new_password'].valid && userEditForm.controls['new_password'].touched">
+        <i class="fa fa-check"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="!userEditForm.controls['new_password'].valid && userEditForm.controls['new_password'].touched">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger"
+      *ngIf="!userEditForm.controls['new_password'].valid && userEditForm.controls['new_password'].touched">
+      Senha inválida
+    </p>
+  </div>
+  <div class="has-text-centered">
+    <button type="submit" [disabled]="!userEditForm.valid"
+      class="button is-info is-medium">
+      Salvar alterações
+    </button>
+  </div>
+</form>

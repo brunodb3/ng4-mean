@@ -1,1 +1,14 @@
 @import "~variables.scss";
+
+#iw-primary-navbar {
+  background-color: $white;
+  .navbar-brand {
+    .navbar-item {
+      color: $dark;
+    }
+
+     :hover {
+      background-color: darken($white, 5%);
+    }
+  }
+}

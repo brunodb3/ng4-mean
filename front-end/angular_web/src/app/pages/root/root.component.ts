@@ -24,13 +24,14 @@ export class RootComponent implements OnInit {
   private currentUrl: String;
   private notificationOptions: any;
   private routeName: String = 'Root';
+  private burgerMenu: Boolean = false;
 
   constructor(
     private router: Router
   ) {
     /* Angular Notification module options variable */
     this.notificationOptions = {
-      timeOut: 5000,
+      timeOut: 2500,
       pauseOnHover: true,
       clickToClose: true,
       showProgressBar: true
@@ -42,7 +43,6 @@ export class RootComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         /* Assigning the current url to a class variable */
         this.currentUrl = event.url;
-        console.log("this.currentUrl", this.currentUrl);
       }
     });
   }

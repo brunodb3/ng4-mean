@@ -1,0 +1,13 @@
+@import "~variables.scss";
+
+table {
+  tbody {
+    tr {
+      cursor: pointer;
+    }
+  }
+}
+
+.table[_ngcontent-c4] tr.is-selected[_ngcontent-c4] {
+  background-color: $info;
+}

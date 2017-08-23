@@ -1,0 +1,65 @@
+<table class="table container">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th (click)="selectAllUsers(anyUserSelected)">
+        <input type="checkbox" [(ngModel)]="anyUserSelected" />
+      </th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Nível Acesso</th>
+      <th>
+        <button class="button is-danger"
+          [disabled]="selectedUserList.length == 0"
+          (click)="removeSelected()">
+          <span class="icon tooltip is-tooltip-right"
+            data-tooltip="Remover selecionados">
+            <i class="fa fa-trash"></i>
+          </span>
+        </button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList; let userIndex = index;" [ngClass]="{
+        'is-selected': user.selected
+      }">
+      <th (click)="selectUser(user)">{{ userIndex + 1 }}</th>
+      <td (click)="selectUser(user)">
+        <input type="checkbox" [(ngModel)]="user.selected" />
+      </td>
+      <td (click)="selectUser(user)">
+        {{ user.nome }}
+      </td>
+      <td (click)="selectUser(user)">
+        {{ user.email }}
+      </td>
+      <td (click)="selectUser(user)">
+        <span class="tag is-warning" *ngIf="user.nivel_acesso == 0">
+          Comum
+        </span>
+        <span class="tag is-primary" *ngIf="user.nivel_acesso == 1">
+          Admin
+        </span>
+      </td>
+      <td>
+        <button class="button is-primary"
+          [disabled]="selectedUserList.length > 0">
+          <span class="icon tooltip is-tooltip-right"
+            data-tooltip="Editar usuário"
+            (click)="editUser(user)">
+            <i class="fa fa-pencil"></i>
+          </span>
+        </button>
+        <button class="button is-danger"
+          [disabled]="selectedUserList.length > 0">
+          <span class="icon tooltip is-tooltip-right"
+            data-tooltip="Remover usuário"
+            (click)="removeUser(user)">
+            <i class="fa fa-trash"></i>
+          </span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

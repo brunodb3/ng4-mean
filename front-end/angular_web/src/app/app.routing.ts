@@ -12,6 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 /* Importing custom providers */
 import { AuthGuard } from './services/auth-guard.service';
@@ -20,8 +21,9 @@ import { AuthGuard } from './services/auth-guard.service';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '404', component: NotFoundComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'editar-usuario/:userEmail', component: EditarUsuarioComponent },
   { path: '**', redirectTo: '/404' }
 ];
 

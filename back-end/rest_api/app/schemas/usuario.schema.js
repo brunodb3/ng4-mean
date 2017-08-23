@@ -54,14 +54,8 @@ usuariosSchema.pre('save', function(next) {
  * @param  {String}  checkPassword   Password to check against the hash
  * @return {Null}                       
  */
-usuariosSchema.methods.validPassword = function(checkPassword, callback) {
-  bcrypt.compare(checkPassword, this.senha, function(err, isMatch) {
-    /* Checking for errors */
-    if (err) { return callback(false); }
-
-    /* Returning the "isMatch" variable */
-    return callback(isMatch);
-  });
+usuariosSchema.methods.validPassword = function(checkPassword) {
+  return bcrypt.compareSync(checkPassword, this.senha);
 };
 
 /* Enabling encryption plugin */

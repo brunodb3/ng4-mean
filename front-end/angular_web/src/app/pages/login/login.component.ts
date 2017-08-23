@@ -57,8 +57,6 @@ export class LoginComponent implements OnInit {
     this.loginService.sendLogin(this.loginForm.value)
       .then((success: any) => {
         /* Success */
-        console.log(success);
-
         /* Saving the JWT on localStorage */
         localStorage.setItem('session_token', success.session_token);
 
@@ -66,8 +64,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       }, (error: any) => {
         /* Error */
-        console.error(error);
-
         this.notificationsService.error('Erro', error.message);
       });
   }

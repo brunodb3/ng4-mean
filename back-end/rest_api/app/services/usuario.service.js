@@ -49,16 +49,24 @@ function getLogin(req, res, next) {
     }
 
     /* Validating user password */
-    userDoc.validPassword(req.body.senha, function(isMatch) {
-      /* There was an error with the password */
-      if (!isMatch) { return returnAuthError(res); }
+    if (!userDoc.validPassword(req.body.senha)) {
+      return returnAuthError(res);
+    }
 
-      /* Returning the success message */
-      return res.json({
-        success: true,
-        message: 'Bem vindo ' + userDoc.nome,
-        session_token: jwt.sign(userDoc, Config.token, { expiresIn: '1d' })
-      });
+    /* Creating the user object to sign via JWT */
+    var jwtUser = {
+      _id: userDoc._id,
+      nome: userDoc.nome,
+      email: userDoc.email,
+      dt_cadastro: userDoc.dt_cadastro,
+      nivel_acesso: userDoc.nivel_acesso
+    };
+
+    /* Returning the success message */
+    return res.json({
+      success: true,
+      message: 'Bem vindo ' + userDoc.nome,
+      session_token: jwt.sign(jwtUser, Config.token, { expiresIn: '1d' })
     });
   });
 }
@@ -86,7 +94,7 @@ function tokenMiddleware(req, res, next) {
         req.decodedUser = decoded;
 
         /* Finding the 'usuario' from the token (check if it still exists) */
-        Usuario.findOne({ 'email': decoded._doc.email }, function(err, userDoc) {
+        Usuario.findOne({ 'email': decoded.email }, function(err, userDoc) {
           /* Checking for errors */
           if (err) { return next(err); }
 
@@ -115,9 +123,9 @@ function tokenMiddleware(req, res, next) {
  */
 function accessLevelMiddleware(req, res, next) {
   /* Checking if there is a decoded user (token is valid) */
-  if (req.decodedUser._doc) {
+  if (req.decodedUser) {
     /* Checking if user has admin permissions */
-    if (req.decodedUser._doc.nivel_acesso == 1) {
+    if (req.decodedUser.nivel_acesso == 1) {
       /* proceeds to the next request */
       next();
     } else {
@@ -178,7 +186,8 @@ function getUsuarios(req, res, next) {
     /* Returning the success message */
     return res.json({
       success: true,
-      usuarios: usuarios
+      usuarios: usuarios,
+      message: usuarios.length.toString() + ' usuário(s) encontrado(s)'
     });
   });
 }
@@ -266,15 +275,14 @@ function updateUsuario(req, res, next) {
 
     /* Checking user access level */
     var userAdmin = false;
-    if (req.decodedUser._doc.nivel_acesso === 1) { userAdmin = true; }
+    if (req.decodedUser.nivel_acesso === 1) { userAdmin = true; }
 
     /* Checking if user is admin (should not require user password for admin) */
     if (!userAdmin) {
       /* Checking if the found user password is correct */
-      userDoc.validPassword(req.body.old.senha, function(isMatch) {
-        /* There was an error with the password */
-        if (!isMatch) { return returnAuthError(res); }
-      });
+      if (!userDoc.validPassword(req.body.old.senha)) {
+        return returnAuthError(res);
+      }
     }
 
     /* Tries to update the user's fields */

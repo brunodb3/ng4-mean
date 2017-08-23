@@ -5,8 +5,6 @@
  ******************************************************************************/
 
 /* Importing modules */
-// import 'rxjs/add/operator/map';
-// import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';

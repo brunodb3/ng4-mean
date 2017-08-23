@@ -1,3 +1,10 @@
-<p>
-  {{ routeName }} is here
-</p>
+<article class="message">
+  <div class="message-body">
+    Bem vindo ao sistema NG4-MEAN
+    <b>{{ currentUser.nome }}!</b> Seu email é <b>{{ currentUser.email }}</b>
+    e seu nível de acesso é
+    <span *ngIf="currentUser.nivel_acesso == 1"><b>Admin</b></span>
+    <span *ngIf="currentUser.nivel_acesso == 0"><b>Comum</b></span>
+  </div>
+</article>
+<app-tabela-usuarios></app-tabela-usuarios>
