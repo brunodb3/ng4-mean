@@ -340,7 +340,7 @@ function updateUsuario(req, res, next) {
  */
 function removeUsuario(req, res, next) {
   /* Checking for the 'email' parameter */
-  if (!req.body.email) {
+  if (!req.query.email) {
     return res.json({
       success: false,
       message: 'Confira se todos os campos foram preenchidos corretamente'
@@ -348,7 +348,7 @@ function removeUsuario(req, res, next) {
   }
 
   /* Finding the user document based on query */
-  Usuario.findOne({ 'email': req.body.email }, function(err, userDoc) {
+  Usuario.findOne({ 'email': req.query.email }, function(err, userDoc) {
     /* Checking for errors */
     if (err) { return next(err); }
 
@@ -361,14 +361,14 @@ function removeUsuario(req, res, next) {
     }
 
     /* Sends the remove request to the database */
-    Usuario.remove({ 'email': req.body.email }, function(err) {
+    Usuario.remove({ 'email': req.query.email }, function(err) {
       /* Checking for errors */
       if (err) { return next(err); }
 
       /* Returning the success message */
       return res.json({
         success: true,
-        message: req.body.email + ' removido(a) com sucesso'
+        message: req.query.email + ' removido(a) com sucesso'
       });
     });
   });

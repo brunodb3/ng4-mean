@@ -12,6 +12,9 @@ import {
   Event as NavigationEvent
 } from '@angular/router';
 
+/* Importing custom providers */
+import { RootService } from './root.service';
+
 /* Creating the component */
 @Component({
   selector: 'app-root',
@@ -27,14 +30,15 @@ export class RootComponent implements OnInit {
   private burgerMenu: Boolean = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private rootService: RootService
   ) {
     /* Angular Notification module options variable */
     this.notificationOptions = {
       timeOut: 2500,
       pauseOnHover: true,
       clickToClose: true,
-      showProgressBar: true
+      showProgressBar: false
     };
 
     /* Listening for each navigation event */
@@ -49,5 +53,12 @@ export class RootComponent implements OnInit {
 
   /* Fires when everything is loaded and ready */
   ngOnInit() {}
+
+  /* Logs the user out */
+  logout() {
+    if (confirm('Tem certeza que deseja sair?')) {
+      this.rootService.sendLogout();
+    }
+  }
 
 }

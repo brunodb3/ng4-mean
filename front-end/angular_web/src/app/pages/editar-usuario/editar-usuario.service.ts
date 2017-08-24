@@ -84,11 +84,10 @@ export class EditarUsuarioService {
     /* Setting the update parameters */
     params.new['nome'] = userInfo.name;
     params.new['email'] = userInfo.email;
-    // params.new['nivelAcesso'] = userInfo.access_level;
+    params.new['nivelAcesso'] = userInfo.access_level;
 
     /* Checking if should send a new password */
     if (userInfo.new_password) { params.new['senha'] = userInfo.new_password; }
-
 
     /* Assigning the request options */
     let requestOptions: RequestOptions = new RequestOptions({

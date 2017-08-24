@@ -68,6 +68,22 @@
       Nome inválido
     </p>
   </div>
+  <!-- Nível Acesso -->
+  <div class="field" *ngIf="currentUser.nivel_acesso == 1">
+    <label class="label">
+      Nível de Acesso
+    </label>
+    <div class="select">
+      <select formControlName="access_level">
+        <option [value]="1">
+          Admin
+        </option>
+        <option [value]="0">
+          Comum
+        </option>
+      </select>
+    </div>
+  </div>
   <!-- Antiga Senha -->
   <div class="field" *ngIf="currentUser.nivel_acesso == 0">
     <label class="label">

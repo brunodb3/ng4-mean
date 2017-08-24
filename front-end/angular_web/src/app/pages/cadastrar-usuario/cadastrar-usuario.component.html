@@ -1,0 +1,108 @@
+<form [formGroup]="userCreateForm" (ngSubmit)="sendCreate()">
+  <!-- Email -->
+  <div class="field">
+    <label class="label">
+      Email
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <input formControlName="email" type="email" class="input" placeholder="Email do usuário"
+        [ngClass]="{
+          'is-success': userCreateForm.controls['email'].valid && userCreateForm.controls['email'].touched,
+          'is-danger': !userCreateForm.controls['email'].valid && userCreateForm.controls['email'].touched
+        }">
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="userCreateForm.controls['email'].valid && userCreateForm.controls['email'].touched">
+        <i class="fa fa-check"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="!userCreateForm.controls['email'].valid && userCreateForm.controls['email'].touched">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger"
+      *ngIf="!userCreateForm.controls['email'].valid && userCreateForm.controls['email'].touched">
+      E-mail inválido
+    </p>
+  </div>
+  <!-- Nome -->
+  <div class="field">
+    <label class="label">
+      Nome
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <input formControlName="name" type="text" class="input" placeholder="Nome do usuário"
+        [ngClass]="{
+          'is-success': userCreateForm.controls['name'].valid && userCreateForm.controls['name'].touched,
+          'is-danger': !userCreateForm.controls['name'].valid && userCreateForm.controls['name'].touched
+        }">
+      <span class="icon is-small is-left">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="userCreateForm.controls['name'].valid && userCreateForm.controls['name'].touched">
+        <i class="fa fa-check"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="!userCreateForm.controls['name'].valid && userCreateForm.controls['name'].touched">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger"
+      *ngIf="!userCreateForm.controls['name'].valid && userCreateForm.controls['name'].touched">
+      Nome inválido
+    </p>
+  </div>
+  <!-- Nível Acesso -->
+  <div class="field" *ngIf="currentUser.nivel_acesso == 1">
+    <label class="label">
+      Nível de Acesso
+    </label>
+    <div class="select">
+      <select formControlName="access_level">
+        <option [value]="1">
+          Admin
+        </option>
+        <option [value]="0">
+          Comum
+        </option>
+      </select>
+    </div>
+  </div>
+  <!-- Senha -->
+  <div class="field">
+    <label class="label">
+      Senha
+    </label>
+    <div class="control has-icons-left has-icons-right">
+      <input formControlName="password" type="password" class="input" placeholder="Senha do usuário"
+        [ngClass]="{
+          'is-success': userCreateForm.controls['password'].valid && userCreateForm.controls['password'].touched,
+          'is-danger': !userCreateForm.controls['password'].valid && userCreateForm.controls['password'].touched
+        }">
+      <span class="icon is-small is-left">
+        <i class="fa fa-lock"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="userCreateForm.controls['password'].valid && userCreateForm.controls['password'].touched">
+        <i class="fa fa-check"></i>
+      </span>
+      <span class="icon is-small is-right"
+        *ngIf="!userCreateForm.controls['password'].valid && userCreateForm.controls['password'].touched">
+        <i class="fa fa-warning"></i>
+      </span>
+    </div>
+    <p class="help is-danger"
+      *ngIf="!userCreateForm.controls['password'].valid && userCreateForm.controls['password'].touched">
+      Senha inválida
+    </p>
+  </div>
+  <div class="has-text-centered">
+    <button type="submit" [disabled]="!userCreateForm.valid"
+      class="button is-info is-medium">
+      Cadastrar usuário
+    </button>
+  </div>
+</form>

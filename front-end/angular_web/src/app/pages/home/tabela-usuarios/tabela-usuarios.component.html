@@ -9,6 +9,12 @@
       <th>Email</th>
       <th>Nível Acesso</th>
       <th>
+        <button class="button is-primary" [routerLink]="['/cadastrar-usuario']">
+          <span class="icon tooltip is-tooltip-right"
+            data-tooltip="Adicionar usuário">
+            <i class="fa fa-plus"></i>
+          </span>
+        </button>
         <button class="button is-danger"
           [disabled]="selectedUserList.length == 0"
           (click)="removeSelected()">
@@ -20,6 +26,11 @@
       </th>
     </tr>
   </thead>
+  <tfoot>
+    <tr>
+      <th colspan="6">Total de usuários: {{ userList.length }}</th>
+    </tr>
+  </tfoot>
   <tbody>
     <tr *ngFor="let user of userList; let userIndex = index;" [ngClass]="{
         'is-selected': user.selected

@@ -42,6 +42,7 @@ export class EditarUsuarioComponent implements OnInit {
 
     /* Building the user form */
     this.userEditForm = this.formBuilder.group({
+      access_level: [''],
       new_password: [''],
       name: ['', Validators.required],
       old_password: ['', Validators.required],
@@ -54,6 +55,7 @@ export class EditarUsuarioComponent implements OnInit {
     /* Building the user form */
     this.userEditForm = this.formBuilder.group({
       new_password: [''],
+      access_level: [''],
       name: ['', Validators.required],
       old_password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
@@ -67,6 +69,7 @@ export class EditarUsuarioComponent implements OnInit {
       new_password: [''],
       old_password: [''],
       name: ['', Validators.required],
+      access_level: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
     });
   }
@@ -101,6 +104,8 @@ export class EditarUsuarioComponent implements OnInit {
               .setValue(this.userToEdit.email);
             this.userEditForm.controls['name']
               .setValue(this.userToEdit.nome);
+            this.userEditForm.controls['access_level']
+              .setValue(this.userToEdit.nivel_acesso);
           });
       });
   }
@@ -110,9 +115,8 @@ export class EditarUsuarioComponent implements OnInit {
    */
   sendEdit() {
     let query = this.oldUserInfo;
-    query.password = this.userEditForm.value.old_password;
-
     let userInfo = this.userEditForm.value;
+    query.password = this.userEditForm.value.old_password;
 
     this.editarUsuarioService.updateUsuario(query, userInfo)
       .then((response: any) => {

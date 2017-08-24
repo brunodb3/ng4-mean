@@ -21,14 +21,18 @@ import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { TabelaUsuariosComponent } from './pages/home/tabela-usuarios/tabela-usuarios.component';
+import { CadastrarUsuarioComponent } from './pages/cadastrar-usuario/cadastrar-usuario.component';
 
 /* Importing custom providers */
 import { UtilsService } from './services/utils.service';
+import { RootService } from './pages/root/root.service';
 import { HomeService } from './pages/home/home.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { LoginService } from './pages/login/login.service';
+import { AccessGuard } from './services/access-guard.service';
 import { EditarUsuarioService } from './pages/editar-usuario/editar-usuario.service';
 import { TabelaUsuariosService } from './pages/home/tabela-usuarios/tabela-usuarios.service';
+import { CadastrarUsuarioService } from './pages/cadastrar-usuario/cadastrar-usuario.service';
 
 /* Factory to use as a provider for AuthHttp, making it easier to configure */
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -47,7 +51,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     LoginComponent,
     NotFoundComponent,
     EditarUsuarioComponent,
-    TabelaUsuariosComponent
+    TabelaUsuariosComponent,
+    CadastrarUsuarioComponent
   ],
   imports: [
     HttpModule,
@@ -60,11 +65,14 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   ],
   providers: [
     AuthGuard,
+    AccessGuard,
+    RootService,
     HomeService,
     LoginService,
     UtilsService,
     EditarUsuarioService,
     TabelaUsuariosService,
+    CadastrarUsuarioService,
     {
       provide: AuthHttp,
       deps: [Http, RequestOptions],

@@ -35,6 +35,7 @@ export class TabelaUsuariosComponent implements OnInit {
     private notificationsService: NotificationsService,
     private tabelaUsuariosServie: TabelaUsuariosService
   ) {
+    this.userList = [];
     this.selectedUserList = [];
   }
 
@@ -123,15 +124,49 @@ export class TabelaUsuariosComponent implements OnInit {
    * Sends the "delete" request for a selected user
    * @param {Object} user User to be deleted
    */
-  removeUser(user) {
-    console.log(user);
+  removeUser(user, multiple ? ) {
+    let confirmed;
+
+    /* Checking if should be removing multiple users */
+    if (!multiple) {
+      confirmed = confirm('Deseja remover ' + user.nome + '?')
+    } else {
+      confirmed = true;
+    }
+
+    /* Confirms "delete" request */
+    if (confirmed) {
+      this.tabelaUsuariosServie.removeUsuario(user)
+        .then((success: any) => {
+          /* Checking if request was successful */
+          console.log(success);
+          if (success) {
+            this.userList.splice(this.userList.indexOf(user), 1);
+            this.notificationsService.create('Sucesso', success.message);
+          } else {
+            this.notificationsService.error('Erro', success.message);
+          }
+        }, (error: any) => {
+          /* Error */
+          console.log(error);
+          this.notificationsService.error('Erro', error.message);
+        });
+    }
   }
 
   /**
    * Sends the "delete" request for the selected users
    */
   removeSelected() {
-    console.log(this.selectedUserList);
+    if (confirm('Deseja remover ' + this.selectedUserList.length + ' usuários?')) {
+      /* Looping the selected users array */
+      for (var i = 0; i < this.selectedUserList.length; ++i) {
+        var eachUser = this.selectedUserList[i];
+
+        /* Sending the request for each user */
+        this.removeUser(eachUser, true);
+      }
+    }
   }
 
 }
