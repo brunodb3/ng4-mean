@@ -2,10 +2,6 @@
 
 API RESTful para o projeto NG4-MEAN, faz a interface com o banco de dados MongoDB. Desenvolvido por Bruno Duarte Brito, como parte do projeto NG4-MEAN.
 
-Consiste em:
-
-  * [API RESTful](https://github.com/brunodb3/ng4_mean)
-
 ### Versão
 1.0.0
 
@@ -15,20 +11,12 @@ Lista de tecnologias e linguagens de programação envolvidas:
 
 * [NodeJS](https://nodejs.org)
 * [MongoDB](https://www.mongodb.com/)
-* [Mongoose](http://mongoosejs.com/)
 
 ### Instalação
 
 Antes de baixar o repositório, tenha certeza que sua máquina possui [NodeJS](https://nodejs.org/en/) e [MongoDB](https://www.mongodb.com/) instalados.
 
-Clone o repositório em sua máquina:
-
-```sh
-$ git clone [url-do-repositorio]
-$ cd [pasta-do-repositorio]
-```
-
-Então, prepare a plataforma e baixe os módulos:
+Prepare a plataforma e baixe os módulos:
 
 ```sh
 $ npm install # instala todos os módulos do npm

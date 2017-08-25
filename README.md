@@ -13,11 +13,8 @@ Consiste em:
 
 Lista de tecnologias e linguagens de programação envolvidas:
 
-* [CSS3](http://www.w3schools.com/css/css3_intro.asp)
-* [HTML5](http://www.w3schools.com/html/html5_intro.asp)
 * [NodeJS](https://nodejs.org)
 * [MongoDB](https://www.mongodb.com/)
-* [Mongoose](http://mongoosejs.com/)
 * [TypeScript](https://www.typescriptlang.org/)
 * [Angular CLI](https://cli.angular.io/)
 * [AngularJS 4.0.0](https://angular.io/)
@@ -36,5 +33,17 @@ $ cd [pasta-do-repositorio]
 ### Utilização
 
 Existem duas pastas principais neste repositório, ```back-end``` e ```front-end```, cada qual com seus requisitos para configuração e utilização. Vide arquivo ```README.md``` em cada pasta.
+
+### Links úteis
+
+* [NodeJS](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
+* [ExpressJS](https://expressjs.com/)
+* [Angular.io](https://angular.io/)
+* [Angular CLI](https://cli.angular.io/)
+* [nvm - Unix OS](https://github.com/creationix/nvm)
+* [nvm - Windows](https://github.com/coreybutler/nvm-windows)
+* [Sitepoing on MEAN stack](https://www.sitepoint.com/introduction-mean-stack/)
+* [MongoDB as a service on Windows](https://blog.ajduke.in/2013/04/10/install-setup-and-start-mongodb-on-windows/)
 
 **Bruno Duarte Brito - 2017**
