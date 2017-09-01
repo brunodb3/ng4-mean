@@ -23,7 +23,7 @@ module.exports = function(app) {
   app.post('/api/login', Usuarios.getLogin);
 
   /* Using the token authentication middleware (only logged in users below) */
-  app.use(Usuarios.tokenMiddleware);
+  // app.use(Usuarios.tokenMiddleware);
 
   /* Updates an 'usuario' on the database */
   app.put('/api/usuarios', Usuarios.updateUsuario);
@@ -32,7 +32,7 @@ module.exports = function(app) {
   app.get('/api/usuarios', Usuarios.getUsuarios);
 
   /* Using the access level checking middleware (only admin users below) */
-  app.use(Usuarios.accessLevelMiddleware);
+  // app.use(Usuarios.accessLevelMiddleware);
 
   /* Creates an 'usuario' on the database */
   app.post('/api/usuarios', Usuarios.createUsuario);
