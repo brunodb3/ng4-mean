@@ -2,6 +2,9 @@
 
 Este é um projeto inicial de stack MEAN, utilizando Angular 4 e Angular-CLI. Desenvolvido por Bruno Duarte Brito.
 
+> **This repo has been deprecated. Check out my newer [mean_seed](https://github.com/brunodb3/mean_seed)**
+> **Este repositório caiu em desuso. Confira meu novo [mean_seed](https://github.com/brunodb3/mean_seed)**
+
 Consiste em:
 
   * [MEAN Stack](https://github.com/brunodb3/ng4_mean)
